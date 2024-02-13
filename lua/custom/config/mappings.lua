@@ -17,6 +17,14 @@ vim.keymap.set('n', '<c-S>', '<cmd>wa<cr>'),
 vim.keymap.set('i', '<c-S>', '<esc><cmd>wa<cr>'),
 vim.keymap.set('v', '<c-S>', '<esc><cmd>wa<cr>'),
 
+  -- Also make it so cmd + s saves
+vim.keymap.set('n', '<D-s>', '<cmd>w<cr>'),
+vim.keymap.set('i', '<D-s>', '<esc><cmd>w<cr>'),
+vim.keymap.set('v', '<D-s>', '<esc><cmd>w<cr>'),
+vim.keymap.set('n', '<D-S>', '<cmd>wa<cr>'),
+vim.keymap.set('i', '<D-S>', '<esc><cmd>wa<cr>'),
+vim.keymap.set('v', '<D-S>', '<esc><cmd>wa<cr>'),
+
 -- Split Vertical which is actually horizontally
 vim.keymap.set('n', '<leader>v', '<cmd>vs<cr>'),
 
