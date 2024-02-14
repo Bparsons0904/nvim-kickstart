@@ -7,7 +7,7 @@ return {
             require('null-ls').setup({
                 sources = {
                     require('null-ls').builtins.formatting.prettier.with({
-                        extra_args = { "--tab-width", "2", "--single-quote", "--trailing-comma", "all" },
+                        -- extra_args = { "--tab-width", "2", "--single-quote", "--trailing-comma", "all" },
                         -- other prettier options here
                     }),
                 },

@@ -636,7 +636,7 @@ local servers = {
   },
 }
 
-
+-- Test if this can be moved to mason-lspconfig
 require 'lspconfig'.gopls.setup {
   cmd = { "gopls", "serve" },
   settings = {
@@ -726,6 +726,7 @@ cmp.setup {
   },
 }
 
+vim.cmd('colorscheme kanagawa-wave')
 require('custom.config')
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

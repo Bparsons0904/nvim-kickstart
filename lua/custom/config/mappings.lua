@@ -40,4 +40,8 @@ return {
 
   -- create new buffer, then open telescope find_files
   vim.keymap.set('n', '<leader>bf', '<cmd>enew<cr><cmd>lua require("telescope.builtin").find_files()<cr>'),
+
+  -- When moving up and down, recenter the screen
+  vim.keymap.set('n', '<C-u>', '<C-u>zz'),
+  vim.keymap.set('n', '<C-d>', '<C-d>zz'),
 }
