@@ -13,5 +13,5 @@ vim.opt.splitbelow = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 
-vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', extends = '→', precedes = '←' }
+-- vim.opt.list = true
+-- vim.opt.listchars = { tab = '» ', trail = '·', extends = '→', precedes = '←' }
