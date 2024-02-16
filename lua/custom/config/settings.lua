@@ -15,3 +15,6 @@ vim.opt.sidescrolloff = 8
 
 -- vim.opt.list = true
 -- vim.opt.listchars = { tab = '» ', trail = '·', extends = '→', precedes = '←' }
+--
+--
+vim.g.skip_ts_context_commentstring_module = true

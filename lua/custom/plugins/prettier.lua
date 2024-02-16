@@ -2,8 +2,7 @@ return {
     { 'neovim/nvim-lspconfig' },
     {
         'jose-elias-alvarez/null-ls.nvim',
-        config = function(
-        )
+        config = function()
             require('null-ls').setup({
                 sources = {
                     require('null-ls').builtins.formatting.prettier.with({

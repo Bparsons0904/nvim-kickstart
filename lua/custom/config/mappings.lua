@@ -1,7 +1,4 @@
 return {
-  vim.keymap.set('n', '<leader>ff', '<cmd>lua require("telescope.builtin").find_files()<cr>'),
-
-
   -- Set jk and kj to <esc>
   vim.keymap.set('i', 'jk', '<esc>'),
   vim.keymap.set('i', 'kj', '<esc>'),
@@ -44,4 +41,25 @@ return {
   -- When moving up and down, recenter the screen
   vim.keymap.set('n', '<C-u>', '<C-u>zz'),
   vim.keymap.set('n', '<C-d>', '<C-d>zz'),
+
+
+  vim.keymap.set('n', 'gv', function()
+    -- Save the current window ID to return later if needed
+    local current_win = vim.api.nvim_get_current_win()
+
+    -- Open a new split window (you can also use 'vsplit' for a vertical split)
+    vim.cmd('split')
+
+    -- Try to jump to the definition using LSP
+    vim.lsp.buf.definition()
+
+    -- Optional: Focus back to the original window if the definition wasn't found
+    -- This part requires additional logic to check if the jump was successful
+    -- and is left as an exercise or further customization.
+  end, { desc = 'Go to definition in a split window' }),
+
+
+  vim.keymap.set('n', '<leader>bq', function()
+    vim.cmd('bufdo bd')
+  end),
 }

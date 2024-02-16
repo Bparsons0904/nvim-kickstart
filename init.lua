@@ -447,7 +447,13 @@ end
 vim.keymap.set('n', '<leader>f/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
 vim.keymap.set('n', '<leader>fs', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
-vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+-- vim.keymap.set('n', '<leader>ff', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>ff', function()
+  require('telescope.builtin').find_files({
+    find_command = { 'rg', '--ignore', '--hidden', '--files' },
+    prompt_prefix = ' 🔍 ',
+  })
+end, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>jw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
@@ -503,8 +509,20 @@ vim.defer_fn(function()
           ['ia'] = '@parameter.inner',
           ['af'] = '@function.outer',
           ['if'] = '@function.inner',
-          ['ac'] = '@class.outer',
-          ['ic'] = '@class.inner',
+          -- ['ac'] = '@class.outer',
+          -- ['ic'] = '@class.inner',
+          ['al'] = '@loop.outer',
+          ['il'] = '@loop.inner',
+          ['ab'] = '@block.outer',
+          ['ib'] = '@block.inner',
+          ['am'] = '@call.outer',
+          ['im'] = '@call.inner',
+          ['av'] = '@assignment.outer',
+          ['iv'] = '@assignment.inner',
+          ['iV'] = '@assignment.lhs',
+          ['aV'] = '@assignment.rhs',
+          ['ac'] = '@conditional.outer',
+          ['ic'] = '@conditional.inner',
         },
       },
       move = {
@@ -727,7 +745,9 @@ cmp.setup {
 }
 
 -- vim.cmd('colorscheme kanagawa-wave')
-vim.cmd('colorscheme bluloco')
+vim.cmd('colorscheme bluloco-dark')
 require('custom.config')
+
+vim.cmd [[highlight Normal guibg=#080808]]
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
