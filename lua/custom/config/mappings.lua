@@ -25,6 +25,12 @@ return {
   -- Split Vertical which is actually horizontally
   vim.keymap.set('n', '<leader>v', '<cmd>vs<cr>'),
 
+  -- Move to the right window with shift + l
+  vim.keymap.set('n', '<S-l>', '<C-w>l'),
+  vim.keymap.set('n', '<S-h>', '<C-w>h'),
+  -- Swap the left and right windows
+  vim.keymap.set('n', '<leader>ws', '<C-w>r'),
+
 
   -- Comment out the current line or visual selection
   -- vim.keymap.set('n', '<leader>c', '<cmd>CommentToggle<cr>'),
@@ -34,7 +40,16 @@ return {
   vim.keymap.set('n', '<leader>bp', '<cmd>bp<cr>'),
   vim.keymap.set('n', '<leader>bn', '<cmd>bn<cr>'),
   vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>'),
+  vim.keymap.set('n', '<leader>1', '<cmd>1b<cr>'),
+  vim.keymap.set('n', '<leader>2', '<cmd>2b<cr>'),
+  vim.keymap.set('n', '<leader>3', '<cmd>3b<cr>'),
+  vim.keymap.set('n', '<leader>4', '<cmd>4b<cr>'),
+  vim.keymap.set('n', '<leader>5', '<cmd>5b<cr>'),
 
+  -- Close all buffers
+  vim.keymap.set('n', '<leader>bq', function()
+    vim.cmd('bufdo bd')
+  end),
   -- create new buffer, then open telescope find_files
   vim.keymap.set('n', '<leader>bf', '<cmd>enew<cr><cmd>lua require("telescope.builtin").find_files()<cr>'),
 
@@ -44,22 +59,9 @@ return {
 
 
   vim.keymap.set('n', 'gv', function()
-    -- Save the current window ID to return later if needed
-    local current_win = vim.api.nvim_get_current_win()
-
-    -- Open a new split window (you can also use 'vsplit' for a vertical split)
-    vim.cmd('split')
-
-    -- Try to jump to the definition using LSP
+    vim.cmd('vsplit')
     vim.lsp.buf.definition()
-
-    -- Optional: Focus back to the original window if the definition wasn't found
-    -- This part requires additional logic to check if the jump was successful
-    -- and is left as an exercise or further customization.
   end, { desc = 'Go to definition in a split window' }),
 
 
-  vim.keymap.set('n', '<leader>bq', function()
-    vim.cmd('bufdo bd')
-  end),
 }
